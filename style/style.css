@@ -1,0 +1,287 @@
+/* root end */
+
+:root{
+  --light-yellow: rgb(231, 245, 37);
+  --light-corral: rgb(56, 228, 165);;
+  --background-color: #222;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  font-size: 16px;
+}
+
+body{
+  background: linear-gradient(45deg, #02001f,#008585a3);
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container{
+  max-width: 1140px;
+  width: 100%;
+  margin: 0px auto;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-list{
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* root end */
+
+
+/* Main items */
+
+
+.button{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 8em;
+  font-weight: bold;
+  text-align: center;
+  color: transparent; 
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.elements{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0px;
+  height: 0.2%; 
+  background: var(--light-corral);
+  z-index: 10;
+  transition:  all 0.5s cubic-bezier(.16,1.08,.38,.98);
+  border-top-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+}
+
+@-moz-document url-prefix() {
+  .elements {
+    height: 1%; 
+  }
+  .button:hover .elements{
+    width: 1.2rem;
+    transform: scaleX(100) scaleY(80);
+  }
+}        
+
+
+.button:hover .elements{
+  width: 1.2%;
+  transform: scaleX(100) scaleY(5);
+
+}
+
+/* Main items */
+
+/* Pseudo elements */
+
+.button::before,
+.button::after{
+  display: flex;
+  justify-content: center;
+  content: attr(data-text);
+  display: block;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0%;
+  height: 52%;
+  transition:  all .8s cubic-bezier(.16,1.08,.38,.98);
+  overflow: hidden;
+  color: var(--light-corral);
+  text-align: center;
+  text-shadow: 0 0.08rem 0 white; 
+  text-transform: uppercase;
+}
+
+.button::after{
+  display: flex;
+  align-items: flex-end;
+  top: 48%;
+}
+.button::before{
+  height: 48%;
+}
+
+/* Pseudo elements */
+
+
+/* Hover start */
+
+ .button:hover::before,
+ .button:hover::after{
+  height: 50%;
+  color: var(--light-yellow);
+} 
+
+.button:hover::before{
+  transform: skewX(12deg) translateY(-0.15rem) translateX(0.4rem);
+}
+
+.button:hover::after{
+  transform: skewX(12deg) translateY(0.26rem) translateX(-0.4rem);
+}
+/* Hover start */
+
+
+
+/* some stuff */
+
+.avtivate{
+  position: fixed;
+  bottom: 6vh;
+  right: 6vw;
+  padding: 5px 20px;
+  background: var(--light-corral);
+  border: 2px solid #008585a3;
+  transition: all ease-in-out 100ms;
+  border-radius: 5px;
+}
+
+#left{
+ left: 6vw;
+ width: fit-content;
+}
+
+
+
+.avtivate:hover{
+  background: var(--light-yellow);
+  border: 2px solid #008585a3;
+}
+.avtivate:focus{
+  content: attr(data-text);
+  background: rgb(17, 4, 82);
+  color: white;
+  border: 2px solid #008585a3;
+}
+
+
+/* some stuff */
+
+/* Box start */
+
+.box{
+  z-index: -2;
+  display: flex;
+  flex-direction: row;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  filter: blur(6px);
+  position: absolute;
+
+}
+
+.line{
+  z-index: -10;
+}
+
+
+
+.color{
+  width: 10% ;
+  height: 100% ;
+  animation: hue 1s linear infinite ;
+  animation-delay: calc( 0.1s *  var(--h));
+  animation-duration: calc( 0.1s *  var(--h));
+}
+
+
+.light-2{
+  width: 10% ;
+  height: 100% ;
+  animation: light 1s linear infinite ;
+  animation-delay: calc( 0.1s *  var(--h));
+  animation-duration: calc( 0.1s *  var(--h));
+}
+
+
+
+@keyframes hue {
+  from{
+    border: 1px solid rgb(202, 170, 202);
+    background:  #bed813;
+    filter: hue-rotate(0deg);
+  }
+  to{
+    border: 1px solid rgb(202, 170, 202);
+    filter: hue-rotate(360deg);
+  }
+  
+}
+
+
+@keyframes light {
+  from{
+    
+    background: transparent;
+    filter: hue-rotate(0deg);
+  }
+  99.9%{
+    
+    background: transparent;
+    filter: hue-rotate(0deg);
+  }
+  to{
+    
+   
+    background: var(--light-yellow);
+  }
+  
+}
+
+.color{
+  animation: hue 1s linear infinite ;
+  animation-delay: calc( 0.1s *  var(--h));
+  animation-duration: calc( 0.1s *  var(--h));
+}
+
+/* Box end */
+
+
+/* meadia */
+
+
+@media (max-width:950px) {
+  .button{
+    font-size: 6em;
+  }
+}
+@media (max-width:700px) {
+  .button{
+    font-size: 4em;
+  }
+}
+@media (max-width:480px) {
+  .button{
+    font-size: 3em;
+  }
+}
+@media (max-width:360px) {
+  .button{
+    font-size: 2.5em;
+  }
+}
+
+
+/* meadia */
